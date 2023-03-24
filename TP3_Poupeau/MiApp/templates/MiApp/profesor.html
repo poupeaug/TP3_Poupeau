@@ -1,0 +1,39 @@
+{% extends "MiApp/base.html" %}
+
+{% load static %}
+
+
+{% block principal %}
+
+  <main role="main" class="inner cover">
+    
+    <center><h1 class="cover-heading">Ventas Minorista</h1>
+    <form action="{% url 'buscar_profesor'%}"class="d-flex">
+      <input class="text-center" name="criterio" type="search" placeholder="Buscar Profesor" aria-label="Search">
+      <button class="btn btn-outline-success" type="submit">Buscar</button>
+    </form></center>
+      
+        <center><img src="{% static 'MiApp/static/assets/paisaje3.jpg' %}" alt="centered image" height="500" width="900"> </center>
+        <br>
+      </main> 
+      
+        <br>
+    <br>
+        <ul class="text-left">
+          {% if form %}
+          <form action="{% url 'agregar_profesor'%}" method="post">
+            {% csrf_token %} 
+            {{form.as_p}}
+            <input type="submit" value="Agregar">
+          </form>
+        </ul>
+          {% endif %}
+          <ul>
+            {% for Profesor in Profesor %} 
+            <li> {{Profesor.nombre}} - {{Profesor.email}} - {{Profesor.dni}}</li>
+            {% endfor %}
+
+          
+      </ul>
+      
+{% endblock %}

@@ -1,0 +1,36 @@
+{% extends "MiApp/base.html" %}
+{% load static %}
+
+{% block principal %}
+  <main role="main" class="inner cover">
+        <center><img src="{% static 'MiApp/static/assets/paisaje3.jpg' %}" alt="centered image" height="500" width="900"> </center>
+        <h1 class="cover-heading"></h1>
+        <p class="lead"></p>
+        <p class="lead">
+        </p>
+    </main>
+          
+            <h1>Resultado de busqueda<h1>
+            <ul>
+            {% if curso %}
+            {% for Curso in curso %} 
+            <li> {{Curso.nombre}} - {{Curso.comision}}</li>
+            {% endfor %}
+
+            
+            {% elif Alumno %}
+            {% for Alumno in alumno %} 
+            <li> {{Alumno.nombre}} - {{Alumno.dni}} - {{Alumno.email}}</li>
+            {% endfor %}
+
+            {% elif Profesor %}
+            {% for Profesor in profesor %} 
+            <li> {{Profesor.nombre}} - {{Profesor.dni}} - {{Profesor.email}}</li>
+            {% endfor %}
+
+            {% endif %}
+
+          </ul>
+
+
+{% endblock %}
